@@ -1,0 +1,20 @@
+## Fecha: Julio 14 ##
+
+## Python ##
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar las suguientes carpetas
+.vscode
+
+# Ignorar los siguientes archivos
+dev.*
+public/data.json
+public/documentacion
+public/url_test.txt
+
+# Ignorar las siguientes extensiones
+.dev
+.env
+.no

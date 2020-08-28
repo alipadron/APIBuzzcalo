@@ -1,0 +1,213 @@
+<!-- 
+Buzzcalo - Reporte Amazon Mercadolibre
+Date: August 26th, 2020
+Dev: Franco Gil | f97gp1@gmail.com 
+-->
+
+<html>
+    <meta charset="UTF-8">
+    <!-- <link rel="shortcut icon" href="../../static/assets/sm_buzz.ico"> -->
+    <link rel="shortcut icon" href="../../static/assets/sm_buzz.ico">
+
+    <title>
+        Buzzcalo - Reporte - Amazon | Mercadolibre
+    </title>
+
+    <head>
+        <script type="text/javascript" src="../../static/assets/scripts/render.js"> </script>
+
+       <script src="../../static/jquery-3.4.1.min.js"></script>
+        
+        <link type="text/css" rel="stylesheet" href="../../static/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+        <link type="application/octet-stream" rel="stylesheet" href="../../static/bootstrap-4.3.1-dist/css/bootstrap.min.css.map">
+        <script src="../../static/bootstrap-4.3.1-dist/js/popper.min.js" ></script>
+        <script src="../../static/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+        <script type="application/octet-stream" src="../../static/bootstrap-4.3.1-dist/js/bootstrap.min.js.map"></script>
+
+    </head>
+
+    <style>
+        .vl {
+            border-left: 3px solid black;
+            height: 20px;
+            padding: 30px 0 5px 15px;
+        }
+
+        .main-progress{
+            padding: 1.5rem;
+            margin-right: 0;
+            margin-left: 0;
+            border-width: .2rem;
+        }
+    </style>
+
+    <body>
+        
+        <!-- Start Nav Bar -->
+        <nav id="nav_top" class="navbar navbar-expand navbar-light bg-secondary">
+            <div>
+                <a class="navbar-brand" href="/">
+                    <img src="../../static/assets/sm_buzz.ico" style="width: 35px;">
+                </a>
+            </div>
+    
+            <div class="vl"></div>
+    
+            <div id="snd">
+                <div id="logo_subsection">
+                    <img src="../../static/assets/report_logo.png"  style="width: 30px;"> 
+                </div>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- m = margin, t margin|padding top -->
+            <ul class="navbar-nav ml-auto" style="display:none">
+                <li class="nav-item dropdown" >
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ data.initial_greeting }}
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                            <a class="dropdown-item" href="/restore">Restore Password</a>
+                            <a class="btn btn-secondary dropdown-item " href="/" onclick="log_out()">Log Out</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>  
+            </div>        
+        </nav>
+        <!-- End Nav Bar  -->
+
+        <div class="container">
+            <br>
+            <h5 style="text-align: center;">
+                Artículos y Cantidades.
+            </h5>
+            
+            <div class="card-group">
+
+                <!-- Card one -->
+                <div class="card">
+                  <img src="../../static/assets/sm_buzz.ico" class="card-img-top" alt="..." style="width: 67px; align-self: center; margin-top: 15px;">
+                  <div class="card-body">
+                        <h5 class="card-title">Artículos</h5>
+                        <p class="card-text">Artículos de Buzzcalo.</p>
+                  </div>
+
+                    <button id="buzzcalo_articulos_total" type="button" class="btn btn-secondary" 
+                        type="button" data-toggle="collapse" data-target="#BuzzcaloArticulos" aria-expanded="false" aria-controls="BuzzcaloArticulos">
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </button>
+                    
+                    <div class="collapse" id="BuzzcaloArticulos">
+                        <div class="card card-body">
+                            <div class="card">
+                                <ul id="buzzcalo_categoria" class="list-group list-group-flush">
+                                    <div class="spinner-grow text-success" role="status" style="place-self: center;">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Card Two -->
+                <div class="card">
+                    <img src="../../static/assets/Amazon-512.webp" class="card-img-top" alt="..." style="width: 67px; align-self: center; margin-top: 15px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Amazon</h5>
+                        <p class="card-text">Artículos tomados desde Amazon y disponibles para vender.</p>
+                    </div>
+                    <button id="amazon_articulos_vender" type="button" class="btn btn-dark" data-toggle="tooltip" data-placement="top">
+                        <!-- Cantidad <span class="badge badge-light">140.0K</span> -->
+                        <div class="spinner-grow text-success" role="status" style="place-self: center;">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </button>
+                </div>
+                
+                <!-- Card Three -->
+                <div class="card">
+                    <img src="../../static/assets/Amazon-512.webp" class="card-img-top" alt="..." style="width: 67px; align-self: center; margin-top: 15px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Listas Amazon</h5>
+                        <p class="card-text">Cantidad de Listas de Amazon actualizadas.</p>
+                    </div>
+                    <button id="amazon_listas_actualizadas" type="button" class="btn btn-dark" data-toggle="tooltip" data-placement="top">
+                        <!-- Cantidad <span class="badge badge-light">360</span> -->
+                        <div class="spinner-grow text-success" role="status" style="place-self: center;">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="../../static/assets/mercado-libre-logo.png" class="card-img-top" alt="..."  style="margin-top: 15px;">
+                    <div class="card-body">
+                      <h5 class="card-title">Mercadolibre</h5>
+                      <p class="card-text">Cantidad de elementos en tiendas de Mercadolibre.</p>
+                    </div>
+                    
+                    <button  id="mercadolibre_destino" type="button" class="btn btn-secondary" 
+                        type="button" data-toggle="collapse" data-target="#MercadolibreTienda" aria-expanded="false" aria-controls="MercadolibreTienda">
+                        <div class="spinner-grow text-success" role="status" style="place-self: center;">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </button>
+                    
+                    <div class="collapse" id="MercadolibreTienda">
+                        <div class="card card-body">
+                            <div class="card">
+                                <ul id ="mercadolibre_destino_tienda" class="list-group list-group-flush">
+                                    <div class="spinner-grow text-success" role="status" style="place-self: center;">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- TRM -->
+            <div class="container-sm" style="text-align: center;">
+                <br>
+                <div class="card-group">
+                    <div class="card" style="width: 18rem; margin-left: 200px; margin-right: 200px;">
+                        <div class="card-header">
+                            <p style="text-align: -webkit-center;">
+                                Tasa Representativa del Mercado 
+                            </p>
+                        </div>
+                        <ul id="trm_metricas" class="list-group list-group-flush">
+                            <div class="spinner-grow text-success" role="status" style="place-self: center;">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </ul>
+                        <!-- <p class="card-text" style="text-align-last: right;">
+                            <small class="text-muted">Actuaizado hace 3 hrs. y 3 mins.</small>
+                        </p> -->
+                    </div>        
+                </div>
+            </div>
+        </div>
+        
+        <footer class="page-footer font-small unique-color-dark pt-4">
+            <div class="footer-copyright text-center py-3">
+                <p> 
+                    buzzcalo.com © 2020
+                    <img 
+                        src="../../static/assets/sm_buzz.ico" 
+                        type="image/jpeg" alt="Castle"  width="24"  height="24">
+                </p>
+            </div>
+        </footer>
+        
+    </body>
+
+</html>

@@ -1,0 +1,86 @@
+{
+    "amazon": {
+        "articulos_vender": 636,
+        "listas_actualizadas": 0,
+        "listas_total": 7585
+    },
+    "buzzcalo": {
+        "articulos_total": 0,
+        "categoria": [
+            {
+                "cantidad": 24,
+                "nombre": "Bebé"
+            },
+            {
+                "cantidad": 189,
+                "nombre": "Deportes y actividad fisica"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Electrónicos"
+            },
+            {
+                "cantidad": 473,
+                "nombre": "Hogar y cocina"
+            },
+            {
+                "cantidad": 3829,
+                "nombre": "Juguetes y juegos"
+            },
+            {
+                "cantidad": 165,
+                "nombre": "Mascotas"
+            }
+        ]
+    },
+    "mercadolibre": {
+        "articulos_vendiendo_total": 15,
+        "tiendas_destino": [
+            {
+                "cantidad": 12,
+                "nombre": [
+                    "ML-COL-A"
+                ]
+            },
+            {
+                "cantidad": 0,
+                "nombre": [
+                    "ML-COL-B"
+                ]
+            },
+            {
+                "cantidad": 0,
+                "nombre": [
+                    "ML-MEX-A"
+                ]
+            },
+            {
+                "cantidad": 0,
+                "nombre": [
+                    "ML-COL-C"
+                ]
+            }
+        ]
+    },
+    "proxy": [
+        {
+            "cantidad": 137,
+            "nombre": "gratuito"
+        },
+        {
+            "cantidad": 0,
+            "nombre": "premium"
+        }
+    ],
+    "reporte": "buzzcalo",
+    "status": "ok",
+    "timestamp": 1598565369,
+    "trm": {
+        "cop": 0.0002571275764183157,
+        "source": "currencylayer",
+        "timestamp": 1598287085,
+        "usd": 1,
+        "usd-cop": 3889.12,
+        "usd-mex": 21.99646
+    }
+}
