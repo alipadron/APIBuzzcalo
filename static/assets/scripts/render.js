@@ -107,12 +107,12 @@ function card_trm( obj_trm ){
 
 async function renderizar(){
 
-    var endpoint = domain + "/buzzcalo"
+    var endpoint = domain + "/buzzcalo";
+    // var endpint = domain + '/static/assets/server_mock.json';
 
     const response = await fetch(endpoint);
     var staticData = await response.json();
 
-    //console.log( staticData )
     card_buzzcalo( staticData.buzzcalo );
     card_amazon( staticData.amazon );
     card_mercadolibre( staticData.mercadolibre );
