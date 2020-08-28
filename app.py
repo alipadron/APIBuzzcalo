@@ -1,10 +1,19 @@
-"""dev: franco@systemagency.com
+"""
+Dev: f97gp1@gmail.com
 
-For execute this python script:
-$ python3 app.py
+Fecha: Agosto 27, 2020
 
-This script will active a web server to response the
-requests from endpount | route ''.
+Descripción: 
+
+Punto de entrada para la API
+
+Ejemplo de ejecución (ejemplo para el local host):
+
+$: python3 app.py
+
+Para dejar la API funcionando constantemente se deben
+utilizar un conjunto de herramientas, explicadas en el
+README de este proyecto.
 """
 
 import os
@@ -59,6 +68,17 @@ def main_login():
     data = {}
 
     return render_template(template, data=data), 200
+
+@app.route('/info', methods=['GET', 'POST'])
+def info():
+    status_code = 200
+    data = {
+        'info' : 'API para el servicio de extracción de buzzcalo.com',
+        'status' : '0K',
+        'version' : 'v1'
+    }
+
+    return jsonify(data), status_code
 
 
 if __name__ == '__main__':

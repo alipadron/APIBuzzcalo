@@ -1,7 +1,7 @@
 """
 Descripción:
 
-Ruta con conjunto de endpoints que suministrarán información de los elementos
+Ruta con un conjunto de endpoints que suministrarán información de los elementos
 dentro de la base de datos.
 """
 
@@ -59,7 +59,7 @@ def obtener_reporte():
             }
         )
 
-    # amazon - filtro
+    # amazon - filtros
     articulos_vender = db.raw_query('select count(*) \
         from conjunto_articulo where informacion != \'{}\' and destino like(\'%33166%\');')
     articulos_vender = articulos_vender[0][0]
@@ -73,7 +73,7 @@ def obtener_reporte():
             cast( extract( epoch from now() ) as int ) - timestamp < 8 * 3600')
     listas_actualizadas = listas_actualizadas[0][0]
     
-    # mercadolibre
+    # mercadolibre - filtros
     articulos_vendiendo_total = db.raw_query('select count(*) \
         from conjunto_articulo where sku is not null;')
     articulos_vendiendo_total = articulos_vendiendo_total[0][0]
@@ -90,11 +90,11 @@ def obtener_reporte():
             }
         )
 
-    # trm
+    # trm - filtro
     trm = db.raw_query('select trm from trm where id_trm = \'trm_buzzcalo\'')
     trm = trm[0][0]
 
-    # proxies
+    # proxies - filtros
     gratuito = db.raw_query('select count(*) \
         from conjunto_proxy where en_uso = True and gratuito=True')
     gratuito = gratuito[0][0]
@@ -138,62 +138,3 @@ def obtener_reporte():
 
     db.close()
     return jsonify(out), status_code
-
-"""
-
--- consultas para el reporte
--- buzzcalo
--- articulos_total
-select count(*) from conjunto_url where url like('%Item');
-
--- articulo_por_categoria
--- obtener categorías
-select distinct(categoria->>'nombre') from conjunto_url where tipo like('%-Lista') and categoria->>'nombre' is not null;
--- categoria
-out = articulo_modelo.tomar_articulo_cat(
-        tipo_url='Amazon-Item',
-        categoria=categoria, -- categoria
-        destino=destino,
-        # not_tienda,
-        # tienda,
-        q_random=True,
-        idioma=None,
-        # completo=False,
-        # tomado=False,
-        # limite=1,
-        modo_dict=False,
-        solo_cant=True,
-        check_tomado_art=False
-    )
-
--- amazon
--- articulos_vender
-select count(*) as "oro" from conjunto_articulo where informacion != '{}' and destino like('%33%');
-
--- listas_total
-select count(*) from conjunto_url where url like('%Lista%');
-
--- listas_actualizadas (listas con menos de 8 horas de antgiüedad)
-select count(*) as "urls actualizadas" from conjunto_url where tipo like('Amazon-Lista%') and cast( extract( epoch from now() ) as int ) - timestamp < 8 * 3600;
-
--- mercadolibre
--- articulos_vendiendo_total
-select count(*) from conjunto_articulo where sku is not null;
-
--- tiendas_destino
--- selecionar tiendas desino | tokens
-select nombre from tienda;
-    select count(*) from conjunto_articulo where sku->>'{}' is not null; -- tienda
-
--- trm
-select trm from trm where id_trm = 'trm_buzzcalo';
-
--- proxies
--- gratuitos y en uso
-select count(*) from conjunto_proxy where en_uso = True and gratuito=True;
-
--- premium y en uso
-select count(*) from conjunto_proxy where en_uso = True and gratuito=False;
-
-
-"""

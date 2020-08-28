@@ -51,6 +51,8 @@ class Database:
     def raw_query( self, sql:str ) -> list:
         """
         Método que recibe una consulta de tipo SELECT.
+
+        :param sql str. Consulta en formato sql.
         """
         out = []
         try:
@@ -66,7 +68,12 @@ class Database:
 
     def raw_insert(self, sql:str, values:list):
         """ 
-        Se ejecuta una consulta de insersión, en caso de no ejecutar n
+        Se ejecuta una consulta de insersión, en caso de no ser ejecutada
+        con éxito, se emitirá errores.
+
+        :param sql str. Consulta en formato sql.
+
+        :param values list. Parámetros que necesitará la consuta de inserción.
         """
         try:
             self.cursor.execute( sql, (values) )
@@ -82,7 +89,7 @@ class Database:
         """
         Método que permite eliminar filas un tabla.
 
-        :params sql str: Consulta a ser ejecutada.
+        :param sql str. Consulta en formato sql.
         """
         try:
             self.cursor.execute( sql )
@@ -95,7 +102,7 @@ class Database:
         """
         Método que permite actualizar filas de una tabla.
 
-        :params sql str: Consulta a ser ejecutada.
+        :param sql str. Consulta en formato sql.
         """
         try:
             time.sleep( .256 )
@@ -137,7 +144,7 @@ class Database:
 
     def commit( self ):
         """ 
-            Commit, materializa la transacción. 
+        Commit, materializa la transacción. 
         """
         if not self.conn:
             raise Exception('[INFO] Conexión vacía, no existe commit.')
